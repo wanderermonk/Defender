@@ -1,0 +1,16 @@
+Dear valued user,
+
+I hope this email finds you well. We have detected unusual activity on your
+account and as per our records your access will be suspended within 24 hours
+unless you act immediately.
+
+Please verify your password and confirm your billing details right away using
+the secure portal below:
+
+http://192.0.2.44/account/verify?id=8871
+
+Failure to complete this urgent verification will result in your account being
+permanently locked. Kindly do not hesitate to act now.
+
+Best regards,
+IT Support Department

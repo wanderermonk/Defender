@@ -1,0 +1,436 @@
+1
+00:00:00,400 --> 00:00:05,486
+In 2026, Japan declared a cybersecurity state of emergency.
+
+2
+00:00:05,486 --> 00:00:10,126
+The reason was new: the attacks were powered by AI.
+
+3
+00:00:10,126 --> 00:00:15,733
+Automated, adaptive, and faster than any human team could respond.
+
+4
+00:00:15,733 --> 00:00:22,529
+Signature-based tools miss them, because AI never reuses the same pattern twice.
+
+5
+00:00:22,529 --> 00:00:27,243
+So I built a tool to fight back. It's called Defender.
+
+6
+00:00:27,243 --> 00:00:32,106
+An AI-powered attack detection and mitigation console.
+
+7
+00:00:32,106 --> 00:00:38,307
+It runs completely offline, and nothing it scans ever leaves your machine.
+
+8
+00:00:38,307 --> 00:00:44,137
+No cloud, no account, and no third-party service ever sees your data.
+
+9
+00:00:44,137 --> 00:00:50,263
+And here's the key idea: to catch an AI attack, you use AI to defend.
+
+10
+00:00:50,263 --> 00:00:55,498
+In the next twelve minutes, I'll show you everything it does.
+
+11
+00:00:56,798 --> 00:01:00,100
+Everything starts on the dashboard.
+
+12
+00:01:00,100 --> 00:01:05,261
+One screen gives you your full security picture at a glance.
+
+13
+00:01:05,261 --> 00:01:09,157
+In the center is your overall threat level.
+
+14
+00:01:09,157 --> 00:01:15,358
+Right now this demo machine reads critical, with several serious findings.
+
+15
+00:01:15,358 --> 00:01:19,998
+On the left, your most exposed ports, ranked by risk.
+
+16
+00:01:19,998 --> 00:01:25,679
+Each one shows the application that opened it, and a clear verdict.
+
+17
+00:01:25,679 --> 00:01:31,509
+On the right, the vulnerability board counts open issues by severity.
+
+18
+00:01:31,509 --> 00:01:37,041
+Including the ones attackers are actively exploiting in the wild.
+
+19
+00:01:37,041 --> 00:01:42,276
+Below that, every outbound connection, and its current state.
+
+20
+00:01:42,276 --> 00:01:46,990
+The live alert feed streams detections as they happen.
+
+21
+00:01:46,990 --> 00:01:52,522
+Every alert carries a severity, a score, the evidence, and a fix.
+
+22
+00:01:52,522 --> 00:01:57,683
+All of it is powered by seven specialized detection modules.
+
+23
+00:01:57,683 --> 00:02:04,404
+Log traffic, phishing, endpoints, prompt injection, ports, posture, and outbound.
+
+24
+00:02:04,404 --> 00:02:10,605
+And the whole console is zero-dependency Python. No framework, no install.
+
+25
+00:02:10,605 --> 00:02:14,428
+Let's see them run against a real machine.
+
+26
+00:02:15,728 --> 00:02:20,293
+To analyze your own system, click scan this machine.
+
+27
+00:02:20,293 --> 00:02:24,933
+Defender detects your operating system automatically.
+
+28
+00:02:24,933 --> 00:02:30,317
+Windows, macOS, or Linux. It runs the right checks for each.
+
+29
+00:02:30,317 --> 00:02:36,369
+Everything it does here is strictly read-only. It never changes a thing.
+
+30
+00:02:36,369 --> 00:02:42,347
+It reads your listening ports, running processes, and live connections.
+
+31
+00:02:42,347 --> 00:02:47,731
+Then your security posture: firewall, encryption, patch status.
+
+32
+00:02:47,731 --> 00:02:53,337
+Watch the threat level. It resets, and reflects only this machine.
+
+33
+00:02:53,337 --> 00:02:59,167
+No leftover demo data. Just the real state of your system, right now.
+
+34
+00:02:59,167 --> 00:03:04,253
+Anything that needs admin to read is marked, never guessed.
+
+35
+00:03:04,253 --> 00:03:09,116
+And the input consoles fill with exactly what was found.
+
+36
+00:03:09,116 --> 00:03:14,946
+Your real hostname, your real ports, your real processes. Not a demo.
+
+37
+00:03:16,246 --> 00:03:19,399
+Let's start with your open ports.
+
+38
+00:03:19,399 --> 00:03:24,559
+Defender scores every listening socket by how exposed it is.
+
+39
+00:03:24,559 --> 00:03:30,537
+Local-only ports are low risk. Ports open to the whole network are not.
+
+40
+00:03:30,537 --> 00:03:35,995
+Each row shows the port, the service, and the program behind it.
+
+41
+00:03:35,995 --> 00:03:40,561
+This one is a red flag: port four-four-four-four.
+
+42
+00:03:40,561 --> 00:03:44,755
+The default port for Metasploit reverse shells.
+
+43
+00:03:44,755 --> 00:03:51,253
+Opened by a program running from a temporary folder. A classic intrusion sign.
+
+44
+00:03:51,253 --> 00:03:57,232
+Defender's verdict is clear: close. And it gives you the exact command.
+
+45
+00:03:57,232 --> 00:04:02,541
+A reversible firewall rule, tailored to your operating system.
+
+46
+00:04:02,541 --> 00:04:07,924
+Risky services like R-D-P and S-M-B are flagged the same way.
+
+47
+00:04:07,924 --> 00:04:14,794
+On Windows it's a firewall rule. On Linux, a u-f-w command. On Mac, a p-f anchor.
+
+48
+00:04:14,794 --> 00:04:20,103
+And every block is reversible, so you can undo it at any time.
+
+49
+00:04:20,103 --> 00:04:26,379
+Low-risk, local-only ports are left alone, so you're not drowning in noise.
+
+50
+00:04:27,679 --> 00:04:31,501
+Next, the vulnerability and posture audit.
+
+51
+00:04:31,501 --> 00:04:36,513
+Defender audits your operating system's security controls.
+
+52
+00:04:36,513 --> 00:04:41,302
+Firewall, disk encryption, automatic updates, and more.
+
+53
+00:04:41,302 --> 00:04:45,050
+It flags how far behind your patches are.
+
+54
+00:04:45,050 --> 00:04:49,838
+Because automated exploit kits target known gaps first.
+
+55
+00:04:49,838 --> 00:04:56,188
+Then it checks your installed software against a database of known exploits.
+
+56
+00:04:56,188 --> 00:05:03,133
+Here, an outdated OpenSSH version matches a critical remote-code-execution flaw.
+
+57
+00:05:03,133 --> 00:05:07,922
+Anything being exploited in the wild is marked clearly.
+
+58
+00:05:07,922 --> 00:05:12,264
+And every finding comes with a full fix playbook.
+
+59
+00:05:12,264 --> 00:05:17,127
+Why it matters, the steps, and the exact command to run.
+
+60
+00:05:17,127 --> 00:05:22,882
+The CVE list is a starter set you can extend with your own feeds.
+
+61
+00:05:22,882 --> 00:05:28,043
+Import a fuller database, and the matcher just gets smarter.
+
+62
+00:05:28,043 --> 00:05:34,318
+Each finding is scored, so you always know what's urgent and what can wait.
+
+63
+00:05:35,618 --> 00:05:38,995
+Now the outbound connection monitor.
+
+64
+00:05:38,995 --> 00:05:44,973
+It watches which applications are connecting out, and exactly where to.
+
+65
+00:05:44,973 --> 00:05:50,505
+Here it caught a program sending traffic to a crypto-mining pool.
+
+66
+00:05:50,505 --> 00:05:53,658
+A textbook sign of cryptojacking.
+
+67
+00:05:53,658 --> 00:06:00,454
+And this file, run from Downloads, is talking to a known command-and-control port.
+
+68
+00:06:00,454 --> 00:06:06,432
+But here's the clever part. Defender learns what's normal for each app.
+
+69
+00:06:06,432 --> 00:06:12,782
+After a learning window, any brand-new destination is flagged as an anomaly.
+
+70
+00:06:12,782 --> 00:06:18,463
+That's the behavioral baseline. It catches what no signature could.
+
+71
+00:06:18,463 --> 00:06:24,590
+Each destination is also checked against reputation and known-bad ranges.
+
+72
+00:06:24,590 --> 00:06:30,419
+One click blocks the destination, and can stop the program behind it.
+
+73
+00:06:30,419 --> 00:06:37,067
+And if the app is trusted, you mark the destination safe to refine the baseline.
+
+74
+00:06:38,367 --> 00:06:42,263
+Four more modules handle input you feed in.
+
+75
+00:06:42,263 --> 00:06:46,011
+The log analyzer reads web and auth logs.
+
+76
+00:06:46,011 --> 00:06:51,841
+It catches credential stuffing, recon sweeps, and injection payloads.
+
+77
+00:06:51,841 --> 00:06:57,373
+The content analyzer scores messages for AI-generated phishing.
+
+78
+00:06:57,373 --> 00:07:02,459
+Urgency language, look-alike domains, and mismatched links.
+
+79
+00:07:02,459 --> 00:07:06,653
+The endpoint module inspects running processes.
+
+80
+00:07:06,653 --> 00:07:12,408
+Reverse shells, encoded commands, and ransomware-rate file activity.
+
+81
+00:07:12,408 --> 00:07:18,014
+And the L-L-M defense module protects your own AI applications.
+
+82
+00:07:18,014 --> 00:07:24,439
+It detects prompt injection, jailbreaks, and secrets leaking in model output.
+
+83
+00:07:24,439 --> 00:07:30,045
+As AI gets woven into more apps, that attack surface only grows.
+
+84
+00:07:30,045 --> 00:07:34,090
+Seven modules, one unified view of your risk.
+
+85
+00:07:35,390 --> 00:07:39,733
+Detection is only half the job. Let's fix things.
+
+86
+00:07:39,733 --> 00:07:45,191
+Every alert has a resolve block with concrete, reversible steps.
+
+87
+00:07:45,191 --> 00:07:49,682
+The commands are tailored to your operating system.
+
+88
+00:07:49,682 --> 00:07:54,322
+One click copies the exact command to your clipboard.
+
+89
+00:07:54,322 --> 00:08:00,300
+But Defender never runs it for you. You review, you decide, you run it.
+
+90
+00:08:00,300 --> 00:08:05,535
+No automated changes you didn't approve. You stay in control.
+
+91
+00:08:06,835 --> 00:08:10,137
+All of this feeds the AI advisor.
+
+92
+00:08:10,137 --> 00:08:15,372
+A real scan can surface dozens of issues. Where do you start?
+
+93
+00:08:15,372 --> 00:08:20,309
+The advisor ranks everything by impact divided by effort.
+
+94
+00:08:20,309 --> 00:08:24,875
+So the highest-value fixes rise straight to the top.
+
+95
+00:08:24,875 --> 00:08:29,366
+And you can just ask it anything about your system.
+
+96
+00:08:29,366 --> 00:08:34,824
+It answers using only your live scan results. No hallucinations.
+
+97
+00:08:34,824 --> 00:08:38,572
+No internet, and no cloud model required.
+
+98
+00:08:38,572 --> 00:08:44,476
+If you run a local model with Ollama, answers get more conversational.
+
+99
+00:08:44,476 --> 00:08:50,751
+Each answer is grounded in the exact findings behind it, so you can verify.
+
+100
+00:08:50,751 --> 00:08:56,655
+If you run a local model with Ollama, answers get more conversational.
+
+101
+00:08:56,655 --> 00:09:00,849
+But everything works without it. All on-device.
+
+102
+00:09:00,849 --> 00:09:06,679
+Fix something, hit refresh, and anything resolved drops off the plan.
+
+103
+00:09:07,979 --> 00:09:10,091
+So that's Defender.
+
+104
+00:09:10,091 --> 00:09:15,177
+Seven modules, real machine scanning, and reversible fixes.
+
+105
+00:09:15,177 --> 00:09:19,371
+A grounded AI advisor, and zero dependencies.
+
+106
+00:09:19,371 --> 00:09:24,755
+To run it yourself, it's one command: python three, app dot py.
+
+107
+00:09:24,755 --> 00:09:30,138
+It opens in your browser, and everything stays on your machine.
+
+108
+00:09:30,138 --> 00:09:37,380
+If this was useful, like, subscribe, and share it with someone who cares about security.
+
+109
+00:09:37,380 --> 00:09:39,567
+Thanks for watching.
+

@@ -1,0 +1,5 @@
+# Defender has NO third-party dependencies — it runs on the Python 3.8+
+# standard library alone. This file is intentionally empty.
+#
+# Optional extras (only if you want them):
+#   - a local Ollama server for AI-rewritten advice (no Python package needed)
