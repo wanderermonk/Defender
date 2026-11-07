@@ -29,3 +29,5 @@ token
 
 # auto-excluded (over GitHub's 100MB limit)
 video/voiceover.aiff
+# macOS metadata on external drives
+._*
